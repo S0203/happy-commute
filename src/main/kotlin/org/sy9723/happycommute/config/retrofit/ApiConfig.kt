@@ -1,4 +1,4 @@
-package org.sy9723.happycommute.config
+package org.sy9723.happycommute.config.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,6 +10,9 @@ import org.springframework.core.annotation.Order
 import retrofit2.Retrofit
 import java.time.Duration
 
+/**
+ * OkHttpClient, Retrofit을 bean으로 등록
+ */
 @Configuration
 class ApiConfig {
 
