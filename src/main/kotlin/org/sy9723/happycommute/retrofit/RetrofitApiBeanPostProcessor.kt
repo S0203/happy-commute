@@ -10,7 +10,7 @@ import retrofit2.Retrofit
  * RetrofitApi가 붙어있는 인터페이스의 beanDefinition을 가지고 instantiate 함
  */
 @Component
-class RetrofitApiBeanPostProcessorAdapter : InstantiationAwareBeanPostProcessor, BeanFactoryAware {
+class RetrofitApiBeanPostProcessor : InstantiationAwareBeanPostProcessor, BeanFactoryAware {
     private lateinit var beanFactory: BeanFactory
 
     override fun postProcessBeforeInstantiation(
