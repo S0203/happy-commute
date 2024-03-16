@@ -10,11 +10,13 @@ import retrofit2.Retrofit
  * RetrofitApi가 붙어있는 인터페이스의 beanDefinition을 가지고 instantiate 함
  */
 @Component
-class RetrofitApiBeanPostProcessorAdapter: InstantiationAwareBeanPostProcessor, BeanFactoryAware {
-
+class RetrofitApiBeanPostProcessorAdapter : InstantiationAwareBeanPostProcessor, BeanFactoryAware {
     private lateinit var beanFactory: BeanFactory
 
-    override fun postProcessBeforeInstantiation(beanClass: Class<*>, beanName: String): Any? {
+    override fun postProcessBeforeInstantiation(
+        beanClass: Class<*>,
+        beanName: String
+    ): Any? {
         if (beanClass.isAnnotationPresent(PROCESSING_ANNOTATION)) {
             val retrofit = beanFactory.getBean(Retrofit::class.java)
             return retrofit.create(beanClass)
@@ -22,7 +24,6 @@ class RetrofitApiBeanPostProcessorAdapter: InstantiationAwareBeanPostProcessor, 
 
         return null
     }
-
 
     override fun setBeanFactory(beanFactory: BeanFactory) {
         this.beanFactory = beanFactory

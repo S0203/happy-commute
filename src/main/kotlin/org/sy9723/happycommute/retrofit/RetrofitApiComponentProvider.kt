@@ -8,8 +8,7 @@ import org.springframework.core.type.filter.AnnotationTypeFilter
  * basePackage 아래에 RetrofitApi 어노테이션이 붙어있는 클래스만 검색
  * @see RetrofitApi
  */
-object RetrofitApiComponentProvider: ClassPathScanningCandidateComponentProvider(false) {
-
+object RetrofitApiComponentProvider : ClassPathScanningCandidateComponentProvider(false) {
     init {
         addIncludeFilter(AnnotationTypeFilter(RetrofitApi::class.java))
     }

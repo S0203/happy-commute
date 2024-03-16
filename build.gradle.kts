@@ -6,6 +6,7 @@ plugins {
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.spring") version "1.9.22"
     kotlin("plugin.jpa") version "1.9.22"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
 }
 
 group = "org.sy9723"
@@ -32,8 +33,6 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-
-
 }
 
 tasks.withType<KotlinCompile> {
@@ -45,4 +44,8 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.named("prepareKotlinBuildScriptModel") {
+    finalizedBy("addKtlintCheckGitPreCommitHook")
 }

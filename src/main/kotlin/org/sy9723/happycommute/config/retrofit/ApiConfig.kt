@@ -15,7 +15,6 @@ import java.time.Duration
  */
 @Configuration
 class ApiConfig {
-
     @Value("\${api.baseUrl}")
     lateinit var apiBaseUrl: String
 
@@ -23,9 +22,11 @@ class ApiConfig {
     @Order
     fun okHttpClient(): OkHttpClient {
         return OkHttpClient().newBuilder()
-            .addNetworkInterceptor(HttpLoggingInterceptor {
-                logger.info(it)
-            }.setLevel(HttpLoggingInterceptor.Level.BASIC))
+            .addNetworkInterceptor(
+                HttpLoggingInterceptor {
+                    logger.info(it)
+                }.setLevel(HttpLoggingInterceptor.Level.BASIC)
+            )
             .connectTimeout(Duration.ofSeconds(5))
             .readTimeout(Duration.ofSeconds(5))
             .writeTimeout(Duration.ofSeconds(5))
